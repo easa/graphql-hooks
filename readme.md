@@ -1,12 +1,11 @@
 # GraphQL use cases
 
-> 10:51 3/6/2022 GMT+03:30 
 > I'm going to compare different graph ql tools.
 > Then I'll try suggest different graph ql - client side implementations for a react app.
-> -easa
+> -easa 
+> 10:51 3/6/2022 GMT+03:30 
 
 ## A comparison between different graph ql hooks and tools
-
 
 The following table shows the differences between the different graph ql hooks and tools.
 
@@ -18,6 +17,7 @@ The following table shows the differences between the different graph ql hooks a
 | react-relay   | 185,666   | 16,734/375     | 13.1.1  | 2022        |
 | urql          | 111,374   | 6,940/23       | 2.2.0   | 2022        |
 
+## Goals of this project
 
 The goal of this project is to compare the different graph ql hooks and tools and to see which one is the best for a given use case. The following use cases are considered:
 
@@ -35,3 +35,31 @@ The goal of this project is to compare the different graph ql hooks and tools an
 12. The configuration options should be able to be passed to the `useQuery` hook.
 13. The configuration options should be able to be passed to the `fetch` function.
 14. The configuration options should be able to reset all the internal states.
+
+## Examples of use cases
+
+```tsx
+export default ()=>{
+  const {data, error, fetch} = useQuery({
+    query: gql`
+      query getUser($id: ID!){
+        user(id: $id){
+          id
+          name
+          email
+        }
+      }
+    `,
+    variables: {
+      id: '1'
+    }
+  })
+  return (
+    <div>
+      {data && data.user.name}
+      {error && error.message}
+      <button onClick={()=>fetch()}>Fetch</button>
+    </div>
+  )
+}
+```
