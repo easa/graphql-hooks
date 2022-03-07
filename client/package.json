@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "msw:build": "msw init public/ --save"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +48,8 @@
   "devDependencies": {
     "@types/react-relay": "^13.0.1",
     "msw": "^0.38.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
